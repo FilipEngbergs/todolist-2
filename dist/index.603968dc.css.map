@@ -1,0 +1,1 @@
+{"mappings":"AAEA;EACI;;AACA;EACI","sources":["src/scss/main.scss"],"sourcesContent":["@import \"./components/mixins\";\r\n\r\nbody {\r\n    font-size: 16pt;\r\n    #ul {\r\n        list-style-type: none;\r\n    }\r\n}\r\n"],"names":[],"version":3,"file":"index.603968dc.css.map","sourceRoot":"/__parcel_source_root/"}
