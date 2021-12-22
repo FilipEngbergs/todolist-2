@@ -4,19 +4,33 @@ let todoList: Todolist[] = [];
 
 window.onload = function () {
     let sumbitButton: HTMLButtonElement = document.querySelector("#btn");
-    sumbitButton.addEventListener("click", getUserInput);
+    sumbitButton.addEventListener("click", getUserInputButton);
+
+    getUserInputEnter();
 };
 
-function getUserInput() {
+function getUserInputButton() {
     let input: HTMLInputElement = document.getElementById(
         "user-input"
     ) as HTMLInputElement;
 
     let newTodo: Todolist = new Todolist(input.value, false);
     todoList.push(newTodo);
-    console.log(input.value);
     input.value = "";
+
     creatingTodo();
+}
+
+function getUserInputEnter() {
+    let input: HTMLInputElement = document.getElementById(
+        "user-input"
+    ) as HTMLInputElement;
+
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            getUserInputButton();
+        }
+    });
 }
 
 function creatingTodo(): void {

@@ -1,5 +1,8 @@
 @import "./components/mixins";
 
 body {
-    font-size: 14pt;
+    font-size: 16pt;
+    #ul {
+        list-style-type: none;
+    }
 }
