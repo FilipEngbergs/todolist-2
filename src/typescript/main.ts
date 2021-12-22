@@ -16,4 +16,41 @@ function getUserInput() {
     todoList.push(newTodo);
     console.log(input.value);
     input.value = "";
+    creatingTodo();
+}
+
+function creatingTodo(): void {
+    let todoJSON: string = JSON.stringify(todoList);
+    localStorage.setItem("todo", todoJSON);
+
+    let userInput: HTMLUListElement = document.getElementById(
+        "ul"
+    ) as HTMLUListElement;
+
+    userInput.innerHTML = "";
+
+    for (let i = 0; i < todoList.length; i++) {
+        let todoLi: HTMLLIElement = document.createElement(
+            "li"
+        ) as HTMLLIElement;
+
+        let finishedButton: HTMLButtonElement = document.createElement(
+            "button"
+        ) as HTMLButtonElement;
+
+        let removeButton: HTMLButtonElement = document.createElement(
+            "button"
+        ) as HTMLButtonElement;
+
+        todoLi.innerHTML = todoList[i].name;
+        finishedButton.addEventListener("click", () => {});
+        finishedButton.innerHTML = "Klar";
+        removeButton.addEventListener("click", () => {});
+        removeButton.innerHTML = "Ta bort";
+
+        userInput.appendChild(todoLi);
+        userInput.appendChild(finishedButton);
+        userInput.appendChild(removeButton);
+        document.body.appendChild(userInput);
+    }
 }
