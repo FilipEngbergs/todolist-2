@@ -43,14 +43,30 @@ function creatingTodo(): void {
         ) as HTMLButtonElement;
 
         todoLi.innerHTML = todoList[i].name;
-        finishedButton.addEventListener("click", () => {});
+        finishedButton.addEventListener("click", () => {
+            if (todoList[i].finished == false) {
+                todoList[i].finished = true;
+                creatingTodo();
+            } else {
+                todoList[i].finished = false;
+                creatingTodo();
+            }
+        });
         finishedButton.innerHTML = "Klar";
-        removeButton.addEventListener("click", () => {});
+        removeButton.addEventListener("click", () => {
+            todoList.splice(i, 1);
+            creatingTodo();
+        });
         removeButton.innerHTML = "Ta bort";
 
         userInput.appendChild(todoLi);
         userInput.appendChild(finishedButton);
         userInput.appendChild(removeButton);
         document.body.appendChild(userInput);
+
+        if (todoList[i].finished == true) {
+            todoLi.style.textDecoration = "line-through";
+            finishedButton.innerHTML = "oklar";
+        }
     }
 }
